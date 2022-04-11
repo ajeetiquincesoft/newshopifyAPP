@@ -14,7 +14,7 @@ $fhd   = fopen('order.txt', 'w')  or die("Utyftyftf");
 
 fwrite($fhd, $datak);
 
-$shop = "local-primary-store.myshopify.com";
+//$shop = "local-primary-store.myshopify.com";
 
 $fh   = fopen('order.txt', 'r')  or die("Utyftyftf");
 
@@ -119,9 +119,13 @@ $products = $json_data['products'];
 							for($i=0;$i<4;$i++){
 							$get_shop = $shops_array[$i];		
 									if($get_shop != $shop){
+$delete = "DELETE FROM update_inventory WHERE barcode='".$get_sku."' AND store_name='".$get_shop."'";
+$delete_rs = mysqli_query($conn,$delete);
+if($delete_rs){
+
 	$insert = "INSERT INTO update_inventory (barcode,store_name,quantity) VALUES('".$get_sku."','".$get_shop."','".$quantity."')";
 	$insert_rs = mysqli_query($conn,$insert);		
-
+}
 									}
 							}
 						}
