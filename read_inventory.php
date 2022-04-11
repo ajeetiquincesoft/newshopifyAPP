@@ -20,11 +20,10 @@ $barcode_qty[$barcodes] = $quantity;
 array_push($barcodes_arr,$barcodes);
 }
 $shop = $shop_name;
-include_once 'shop_array.php';
+include 'shop_array.php';
 
 $barcode_string = "";
         for($n=0;$n<sizeOf($barcodes_arr);$n++){
-            echo "dd";
             $barcode_val = $barcodes_arr[$n];
                     if($barcode_string == ''){
                         $barcode_string = "(sku:".$barcode_val.")";
@@ -44,7 +43,7 @@ $barcode_string = "";
 
 
 $url = "https://".$api_key.":".$password."@".$shop."/admin/api/unstable/graphql.json";
-include_once 'graphql_api.php';
+include 'graphql_api.php';
 
 
 }
